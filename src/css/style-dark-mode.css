@@ -1,0 +1,75 @@
+:root {
+    --bg-color: #ffffff;
+    --text-color: #1e1e1e;
+
+  }
+  
+  .dark-mode {
+    --bg-color: #1e1e1e;
+    --text-color: #ffffff;
+  }
+  
+  body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background 0.3s, color 0.3s;
+  }
+
+  body.dark-mode {
+    background: #121212;
+    color: #ffffff;
+}
+
+/* Elementos específicos */
+body.dark-mode .todoapp {
+    background: #1e1e1e;
+    color: #e0e0e0;
+}
+
+body.dark-mode .new-todo,
+body.dark-mode .edit {
+    background: #1e1e1e;
+    color: #fff;
+    border: 1px solid #ffffff;
+}
+
+body.dark-mode .todo-list li {
+    border-bottom: 4px solid #ffffff;
+}
+
+/* Cambiar colores de botones y textos */
+body.dark-mode button {
+    color: #fff;
+}
+
+body.dark-mode .filters li a {
+    color: #ffffff;
+}
+
+body.dark-mode .filters li a.selected {
+    border-color: rgb(255, 255, 255);
+}
+
+body.dark-mode .clear-completed {
+    color: #ffffff;
+}
+
+.div-button {
+  justify-content: center; /* Centra horizontalmente */
+}
+
+/*todo
+Centrar el boton dark
+*/
+
+.div-button2 {
+  align-items: center;
+}
+
+body.dark-mode input::placeholder {
+  color: #ffffff;
+}
+
+body.dark-mode footer {
+  color: #ffffff; /* Color más claro para mejor visibilidad */
+}

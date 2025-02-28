@@ -291,12 +291,13 @@ body {
 }
 
 .filters {
+	float: right;
 	margin: 0;
 	padding: 0;
 	list-style: none;
 	position: absolute;
 	right: 0;
-	left: 0;
+	left: 90px;
 }
 
 .filters li {
@@ -322,9 +323,7 @@ body {
 
 .clear-completed,
 html .clear-completed:active {
-	float: right;
 	position: relative;
-	line-height: 20px;
 	text-decoration: none;
 	cursor: pointer;
 }
