@@ -3,12 +3,14 @@
  * @param {string} elementId 
  */
 
-export const app = (elementId) => {
+import  html  from './app.html?raw';
+
+export const App = (elementId) => {
 
     //Cuando la función app se llama
     (() => {
         const app = document.createElement('div');
-        app.innerHTML = '<h1>Hola mundo</h1>';
+        app.innerHTML = html;
         document.querySelector(elementId).append(app);
     })();
 
