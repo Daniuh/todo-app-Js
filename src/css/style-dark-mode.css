@@ -58,12 +58,8 @@ body.dark-mode .clear-completed {
   justify-content: center; /* Centra horizontalmente */
 }
 
-/*todo
-Centrar el boton dark
-*/
-
 .div-button2 {
-  align-items: center;
+  padding-left: 40%;
 }
 
 body.dark-mode input::placeholder {
