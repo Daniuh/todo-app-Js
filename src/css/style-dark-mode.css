@@ -56,10 +56,11 @@ body.dark-mode .clear-completed {
 
 .div-button {
   justify-content: center; /* Centra horizontalmente */
+  display: grid;
 }
 
 .div-button2 {
-  padding-left: 40%;
+  border-radius: 5px;
 }
 
 body.dark-mode input::placeholder {
