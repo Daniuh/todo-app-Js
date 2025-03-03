@@ -61,6 +61,14 @@ body.dark-mode .clear-completed {
 
 .div-button2 {
   border-radius: 5px;
+  background: #1e1e1e;
+  color: #e0e0e0;
+  padding: 5px;
+}
+
+body.dark-mode .div-button2 {
+  color: #1e1e1e;
+  background: #e0e0e0;
 }
 
 body.dark-mode input::placeholder {
