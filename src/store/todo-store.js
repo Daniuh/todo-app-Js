@@ -11,6 +11,7 @@ const state = {
         new Todo('Piedra del tiempo'),
         new Todo('Piedra del alma'),
         new Todo('Piedra del poder'),
+        new Todo('Piedra de la realidad'),
     ],
     filter: Filters.All
 }
@@ -25,13 +26,30 @@ const loadStore = () => {
     throw new Error('No implementado');
 }
 
+const getTodos = (filter = Filters.All) => {
+    switch (filter) {
+        case Filters.All:
+            return [...state.todos];
+
+        case Filters.Completed:
+            return state.todos.filter(todo => todo.done)
+        
+        case Filters.Pending:
+            return state.todos.filter(todo => !todo.done)
+    
+        default:
+            throw new Error(`Opción ${filter} no es valida.`);
+    }
+}
+
 /**
  * 
  * @param {string} todo  recibe y crea un nuevo todo
  */
 
 const addTodo = (description) => {
-    throw new Error('No implementado');
+    if (!description) throw new Error('La descripción es necesaria');
+    state.todos.push(new Todo(description));
 }
 
 /**
@@ -40,7 +58,12 @@ const addTodo = (description) => {
  */
 
 const toggleTodo = (todoId) => {
-    throw new Error('No implementado');
+    state.todos = state.todos.map(todo =>{
+        if(todo.id === todoId){
+            todo.done = !todo.done;
+        }
+        return todo;
+    })
 }
 
 /**
@@ -49,24 +72,25 @@ const toggleTodo = (todoId) => {
  */
 
 const deletedTodo = (todoId) => {
-    throw new Error('No implementado');
+    state.todos = state.todos.filter(todo => todo.id !== todoId);
 }
 
-const deletedCompleted = (todoId) => {
-    throw new Error('No implementado');
+const deletedCompleted = () => {
+    state.todos = state.todos.filter(todo => todo.done);
 }
 
 const setFilter = (newFilter = Filters.All) => {
-    throw new Error('No implementado');
+    state.filter = newFilter;
 }
 
 const getCurrentFilter = () => {
-    throw new Error('No implementado');
+    return state.filter;
 }
 
 export default {
     initStore,
     loadStore,
+    getTodos,
     addTodo,
     toggleTodo,
     deletedTodo,
