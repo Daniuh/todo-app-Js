@@ -6,7 +6,7 @@
         body.classList.toggle("dark-mode");
         
         if (body.classList.contains("dark-mode")) {
-            toggleButton.textContent = "☀️ Claro";
+            toggleButton.textContent = "Claro ☀️";
             localStorage.setItem("theme", "dark");
         } else {
             toggleButton.textContent = "🌙 Oscuro";
@@ -17,5 +17,5 @@
         // Mantener el modo elegido al recargar
         if (localStorage.getItem("theme") === "dark") {
         body.classList.add("dark-mode");
-        toggleButton.textContent = "☀️ Claro";
+        toggleButton.textContent = "Claro ☀️";
         }
