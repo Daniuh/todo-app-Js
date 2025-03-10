@@ -43,8 +43,22 @@ export const App = (elementId) => {
     });
 
     todoListUL.addEventListener('click', (event) => {
+        const istoggle = event.target.className === 'toggle';
         const element = event.target.closest('[data-id]');
+
+        if( !element || !istoggle) return;
+
         todoStore.toggleTodo(element.getAttribute('data-id'));
+        displayTodos();
+    });
+
+    todoListUL.addEventListener('click', (event) => {
+        const isDestroy = event.target.className === 'destroy';
+        const element = event.target.closest('[data-id]');
+        
+        if( !element || !isDestroy) return;
+        
+        todoStore.deletedTodo(element.getAttribute('data-id'));
         displayTodos();
     });
 }
