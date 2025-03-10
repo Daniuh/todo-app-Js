@@ -23,7 +23,11 @@ const initStore = () => {
 }
 
 const loadStore = () => {
-    throw new Error('No implementado');
+    if (!localStorage.getItem('state'))return;
+
+    const {todos = [], filter = Filters.All} = JSON.parse(localStorage.getItem('state'));
+    state.todos  = todos;
+    state.filter = filter;
 }
 
 const saveLocalStorage = () => {
