@@ -8,8 +8,9 @@ import todoStore from '../store/todo-store';
 import { renderTodos } from './use-cases';
 
 const elementIDs = {
-    TodoList:      '.todo-list',
-    NewTodoInputs: '#new-todo-input',
+    TodoList:       '.todo-list',
+    NewTodoInputs:  '#new-todo-input',
+    ClearCompleted: '.clear-completed',
 }
 
 export const App = (elementId) => {
@@ -30,7 +31,8 @@ export const App = (elementId) => {
 
     //Referencias html
     const newDescriptionInput = document.querySelector(elementIDs.NewTodoInputs);
-    const todoListUL = document.querySelector(elementIDs.TodoList);
+    const todoListUL          = document.querySelector(elementIDs.TodoList);
+    const clearCompleted      = document.querySelector(elementIDs.ClearCompleted);
 
     //Listeners
     newDescriptionInput.addEventListener('keyup', (event) => {
@@ -61,4 +63,9 @@ export const App = (elementId) => {
         todoStore.deletedTodo(element.getAttribute('data-id'));
         displayTodos();
     });
+
+    clearCompleted.addEventListener('click', () => {
+        todoStore.deletedCompleted();
+        displayTodos();
+    })
 }

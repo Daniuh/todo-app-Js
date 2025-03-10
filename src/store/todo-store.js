@@ -90,7 +90,7 @@ const deletedTodo = (todoId) => {
 }
 
 const deletedCompleted = () => {
-    state.todos = state.todos.filter(todo => todo.done);
+    state.todos = state.todos.filter(todo => !todo.done);
 
     saveLocalStorage();
 }
