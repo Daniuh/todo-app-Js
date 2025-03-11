@@ -4,13 +4,14 @@
  */
 
 import  html  from './app.html?raw';
-import todoStore from '../store/todo-store';
+import todoStore, { Filters } from '../store/todo-store';
 import { renderTodos } from './use-cases';
 
 const elementIDs = {
     TodoList:       '.todo-list',
     NewTodoInputs:  '#new-todo-input',
     ClearCompleted: '.clear-completed',
+    TodoFilter:     '.filtro',
 }
 
 export const App = (elementId) => {
@@ -18,7 +19,6 @@ export const App = (elementId) => {
     const displayTodos = () => {
         const todos = todoStore.getTodos(todoStore.getCurrentFilter());
         renderTodos(elementIDs.TodoList, todos);
-        
     }
 
     //Cuando la función app se llama
@@ -33,6 +33,7 @@ export const App = (elementId) => {
     const newDescriptionInput = document.querySelector(elementIDs.NewTodoInputs);
     const todoListUL          = document.querySelector(elementIDs.TodoList);
     const clearCompleted      = document.querySelector(elementIDs.ClearCompleted);
+    const filtersLI           = document.querySelectorAll(elementIDs.TodoFilter);
 
     //Listeners
     newDescriptionInput.addEventListener('keyup', (event) => {
@@ -67,5 +68,26 @@ export const App = (elementId) => {
     clearCompleted.addEventListener('click', () => {
         todoStore.deletedCompleted();
         displayTodos();
-    })
+    });
+
+    filtersLI.forEach(element => {
+        element.addEventListener('click', (element) => {
+            filtersLI.forEach(el => el.classList.remove('selected'));
+            element.target.classList.add('selected');
+
+            switch (element.target.text) {
+                case 'Todos':
+                    todoStore.setFilter(Filters.All);
+                    break;
+                case 'Pendientes':
+                    todoStore.setFilter(Filters.Pending);
+                    break;
+                case 'Completados':
+                    todoStore.setFilter(Filters.Completed);
+                    break;
+            }
+
+            displayTodos();
+        });
+    });
 }

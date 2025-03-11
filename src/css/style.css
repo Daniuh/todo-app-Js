@@ -299,7 +299,7 @@ body {
 	margin: 3px;
 	padding: 3px 7px;
 	text-decoration: none;
-	border: 1px solid transparent;
+	border: 2px solid transparent;
 	border-radius: 3px;
 }
 
@@ -308,7 +308,7 @@ body {
 }
 
 .filters li a.selected {
-	border-color: rgba(175, 47, 47, 0.2);
+	border-color: #1e1e1edc;
 }
 
 .clear-completed,
