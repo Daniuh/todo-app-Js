@@ -5,13 +5,14 @@
 
 import  html  from './app.html?raw';
 import todoStore, { Filters } from '../store/todo-store';
-import { renderTodos } from './use-cases';
+import { renderPendingTodos, renderTodos } from './use-cases';
 
 const elementIDs = {
     TodoList:       '.todo-list',
     NewTodoInputs:  '#new-todo-input',
     ClearCompleted: '.clear-completed',
     TodoFilter:     '.filtro',
+    PendingCount:   '#pending-count',
 }
 
 export const App = (elementId) => {
@@ -19,6 +20,11 @@ export const App = (elementId) => {
     const displayTodos = () => {
         const todos = todoStore.getTodos(todoStore.getCurrentFilter());
         renderTodos(elementIDs.TodoList, todos);
+        pendingCount();
+    }
+
+    const pendingCount = () => {
+        renderPendingTodos(elementIDs.PendingCount);
     }
 
     //Cuando la función app se llama
@@ -27,6 +33,7 @@ export const App = (elementId) => {
         app.innerHTML = html;
         document.querySelector(elementId).append(app);
         displayTodos();
+        pendingCount();
     })();
 
     //Referencias html
@@ -42,6 +49,7 @@ export const App = (elementId) => {
 
         todoStore.addTodo(event.target.value);
         displayTodos();
+        pendingCount();
         event.target.value = '';
     });
 
@@ -53,6 +61,7 @@ export const App = (elementId) => {
 
         todoStore.toggleTodo(element.getAttribute('data-id'));
         displayTodos();
+        pendingCount();
     });
 
     todoListUL.addEventListener('click', (event) => {
@@ -63,11 +72,13 @@ export const App = (elementId) => {
         
         todoStore.deletedTodo(element.getAttribute('data-id'));
         displayTodos();
+        pendingCount();
     });
 
     clearCompleted.addEventListener('click', () => {
         todoStore.deletedCompleted();
         displayTodos();
+        pendingCount();
     });
 
     filtersLI.forEach(element => {
@@ -88,6 +99,7 @@ export const App = (elementId) => {
             }
 
             displayTodos();
+            pendingCount();
         });
     });
 }
