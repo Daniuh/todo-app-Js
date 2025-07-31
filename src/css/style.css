@@ -213,7 +213,6 @@ body {
 }
 
 .todo-list li .destroy {
-	display: none;
 	position: absolute;
 	top: 0;
 	right: 10px;
@@ -231,10 +230,10 @@ body {
 	color: #ff0008;
 }
 
-.todo-list li .destroy:after {
+/*.todo-list li .destroy {
 	content: 'X';
 	cursor: pointer;
-}
+}*/
 
 .todo-list li:hover .destroy {
 	display: block;
