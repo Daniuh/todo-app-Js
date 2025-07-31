@@ -22,7 +22,7 @@
                 <div class="view">\r
                     <input class="toggle" type="checkbox">\r
                     <label>Comprar un unicornio</label>\r
-                    <button class="destroy"></button>\r
+                    <button class="destroy">X</button>\r
                 </div>\r
                 <input class="edit" value="Rule the web">\r
             </li> -->\r
@@ -63,6 +63,6 @@
                 <div class="view">
                     <input class="toggle" type="checkbox" ${t?"checked":""}>
                     <label>${l}</label>
-                    <button class="destroy"></button>
+                    <button class="destroy">X</button>
                 </div>
                 <input class="edit" value="Create a TodoMVC template">`,a=document.createElement("li");return a.innerHTML=s,a.setAttribute("data-id",i),t&&a.classList.add("completed"),a};let b;const V=e=>{if(b||(b=document.querySelector(e)),!b)throw new Error(`Element ${e} not found`);b.innerHTML=c.getTodos(u.Pending).length},g={TodoList:".todo-list",NewTodoInputs:"#new-todo-input",ClearCompleted:".clear-completed",TodoFilter:".filtro",PendingCount:"#pending-count"},$=e=>{const t=()=>{const n=c.getTodos(c.getCurrentFilter());M(g.TodoList,n),l()},l=()=>{V(g.PendingCount)};(()=>{const n=document.createElement("div");n.innerHTML=S,document.querySelector(e).append(n),t(),l()})();const i=document.querySelector(g.NewTodoInputs),o=document.querySelector(g.TodoList),s=document.querySelector(g.ClearCompleted),a=document.querySelectorAll(g.TodoFilter);i.addEventListener("keyup",n=>{n.keyCode===13&&n.target.value.trim().length!==0&&(c.addTodo(n.target.value),t(),l(),n.target.value="")}),o.addEventListener("click",n=>{const p=n.target.className==="toggle",m=n.target.closest("[data-id]");!m||!p||(c.toggleTodo(m.getAttribute("data-id")),t(),l())}),o.addEventListener("click",n=>{const p=n.target.className==="destroy",m=n.target.closest("[data-id]");!m||!p||(c.deletedTodo(m.getAttribute("data-id")),t(),l())}),s.addEventListener("click",()=>{c.deletedCompleted(),t(),l()}),a.forEach(n=>{n.addEventListener("click",p=>{switch(a.forEach(m=>m.classList.remove("selected")),p.target.classList.add("selected"),p.target.text){case"Todos":c.setFilter(u.All);break;case"Pendientes":c.setFilter(u.Pending);break;case"Completados":c.setFilter(u.Completed);break}t(),l()})})};c.initStore();$("#app");const w=document.getElementById("theme-toggle"),v=document.body;w.addEventListener("click",()=>{v.classList.toggle("dark-mode"),v.classList.contains("dark-mode")?(w.textContent="Claro ☀️",localStorage.setItem("theme","dark")):(w.textContent="🌙 Oscuro",localStorage.setItem("theme","light"))});localStorage.getItem("theme")==="dark"&&(v.classList.add("dark-mode"),w.textContent="Claro ☀️");
